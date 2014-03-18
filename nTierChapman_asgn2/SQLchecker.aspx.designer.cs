@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace nTierChapman_asgn2 {
+namespace nTierChapman_asgn3 {
     
     
     public partial class SQLchecker {

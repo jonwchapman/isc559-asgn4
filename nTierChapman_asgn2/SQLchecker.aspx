@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SQLchecker.aspx.cs" Inherits="nTierChapman_asgn2.SQLchecker" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SQLchecker.aspx.cs" Inherits="nTierChapman_asgn3.SQLchecker" %>
 
 <!DOCTYPE html>
 

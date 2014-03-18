@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace nTierChapman_asgn2
+namespace nTierChapman_asgn3
 {
     public partial class WebForm1 : System.Web.UI.Page
     {

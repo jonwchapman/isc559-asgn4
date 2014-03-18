@@ -8,7 +8,7 @@ using dataaccess;
 using businesslogic;
 
 
-namespace nTierChapman_asgn2
+namespace nTierChapman_asgn3
 {
     public partial class SQLchecker : System.Web.UI.Page
     {
