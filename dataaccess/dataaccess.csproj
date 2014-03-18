@@ -7,12 +7,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F789551A-1F8F-48E1-A960-90FA59B36480}</ProjectGuid>
+    <ProjectGuid>{59BBF6DA-2EA7-491A-A70B-CFCFC46A3DD8}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>nTierChapman_asgn2</RootNamespace>
-    <AssemblyName>nTierChapman_asgn2</AssemblyName>
+    <RootNamespace>dataaccess</RootNamespace>
+    <AssemblyName>dataaccess</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -57,45 +57,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SQLchecker.aspx" />
-    <Content Include="Web.config" />
-    <Content Include="WebForm1.aspx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="SQLchecker.aspx.cs">
-      <DependentUpon>SQLchecker.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="SQLchecker.aspx.designer.cs">
-      <DependentUpon>SQLchecker.aspx</DependentUpon>
-    </Compile>
+    <Compile Include="daSQLapp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="utilities.cs" />
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\businesslogic\businesslogic.csproj">
-      <Project>{c7ee0605-6844-4be0-a832-5edff36fff67}</Project>
-      <Name>businesslogic</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\dataaccess\dataaccess.csproj">
-      <Project>{59bbf6da-2ea7-491a-a70b-cfcfc46a3dd8}</Project>
-      <Name>dataaccess</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -110,9 +73,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>3199</DevelopmentServerPort>
+          <DevelopmentServerPort>4157</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:3199/</IISUrl>
+          <IISUrl>http://localhost:4157/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

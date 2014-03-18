@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SQLchecker.aspx.cs" Inherits="nTierChapman_asgn2.SQLchecker" %>
 
 <!DOCTYPE html>
 
@@ -10,9 +10,7 @@
     <form id="wellformedsqlchecker" runat="server">
     <div style="height: 382px">
     
-        <br />
-        <br />
-        <br />
+<h1>generic well formed SQL syntax checker</h1>
     
         <asp:TextBox ID="TextBox1" runat="server" Width="475px" MaxLength="150"></asp:TextBox>
         <br />
