@@ -40,7 +40,7 @@ namespace nTierChapman_asgn3
                 inputStr = ScrubSQLstring(inputStr);                                                    // pass inputStr to Scrub function, set to inputStr
                 char[] delimiters = new char[] { ' ' };                                                   // set delimiter characters
                 // pass scrubbed input, and element count to Build Token array, located in the utilities.cs file.
-                myUtilities.SQLutilities checker = new myUtilities.SQLutilities();                      // create instance of our SQLutilities class
+                businesslogic.blSQLapp checker = new businesslogic.blSQLapp();                      // create instance of our SQLutilities class
                 string[] tokenArray = checker.BuildTokenArray(inputStr);                                // pass our instance the input string IOT have it build an array consisting of the components(tokens) of the SQL input.
                 checker.CheckSQLsyntax(tokenArray);                                                     // pass the array of tokens to the CheckSQLsyntax() method
                 if (checker.errorFound)
