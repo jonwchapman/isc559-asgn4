@@ -5,7 +5,6 @@ using System.Web;
  
 namespace myUtilities
 {
-
     /// SQL utility for ISC559 
 
     public class SQLutilities
