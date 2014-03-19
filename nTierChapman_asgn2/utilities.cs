@@ -5,12 +5,9 @@ using System.Web;
  
 namespace myUtilities
 {
-    /// <summary>
+
     /// SQL utility for ISC559 
-    /// Needs a little more refactoring, considering possibly inverting the selector checks and moving 
-    /// the order of some of the checking.
-    /// TODO: Get with Bill and implement the "TRY&CATCH" block.
-    /// </summary>
+
     public class SQLutilities
     {
         private string errorMessage;                                        
@@ -84,13 +81,6 @@ namespace myUtilities
             return errorMessage;
         }
 
-
-        /*
-         * <<<<<<<<<<<<<<TODO>>>>>>>>>>>>>>>>>>>
-         * Maybe make the algorithm for comparing the attribute selectors to the table selector
-         * recursive, compared to number of elements, minus two - set up with a counter
-         *
-         */
 
         public void CheckSQLsyntax(string[] scrubbedInput)                   // Check the SQL Syntax, token by token. We are only checking the syntax that relates to our limited test cases.
         {
