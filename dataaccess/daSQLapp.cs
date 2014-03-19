@@ -42,6 +42,7 @@ namespace dataaccess
 
                 JobCommand.Connection = JobConnection;
                 JobCommand.CommandType = CommandType.StoredProcedure;
+                
                 JobCommand.CommandText = "ExecuteSqlInputString";
 
 
@@ -50,10 +51,10 @@ namespace dataaccess
 
                     try
                     {
-                        DataSet JobDS = new DataSet();
-                        JobAdapter.Fill(JobDS);
+                        DataSet SQLDS = new DataSet();
+                        JobAdapter.Fill(SQLDS);
 
-                        dtSQLresults = JobDS.Tables[0];
+                        dtSQLresults = SQLDS.Tables[0];
                     }
 
                     catch (SqlException ReadError)

@@ -4,16 +4,23 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
 using dataaccess;
 using businesslogic;
+using System.Data;
 
 
 namespace nTierChapman_asgn3
 {
     public partial class SQLchecker : System.Web.UI.Page
     {
+        
+        String ConnectionString = ConfigurationManager.ConnectionStrings["dbconnect"].ConnectionString;
+        
         blSQLapp obj_blSQLapp = new blSQLapp();
         daSQLapp obj_daSQLapp = new daSQLapp();
+
+       
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -41,6 +48,11 @@ namespace nTierChapman_asgn3
                     Errors1.Text = checker.getError();                                                  // if they were, then set errors to text box <<<<<<<<<<<<<<<<<<<<<<DEBUGGING STEP>>>>>>>>>>>>>>>>>>>
                 }
                 List<string> lst = tokenArray.OfType<string>().ToList();                                // take the array that we got back and turn it into a list
+
+                DataTable returneddl = obj_daSQLapp.GetSQLresult(inputStr, ConnectionString);
+
+                returnedDL.DataSource = returneddl;
+                returnedDL.DataBind();
 
                 GridView1.DataSource = lst;                                                             // set the datasource
                 GridView1.DataBind();                                                                   // bind it
