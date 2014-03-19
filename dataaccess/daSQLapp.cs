@@ -42,7 +42,7 @@ namespace dataaccess
 
                 JobCommand.Connection = JobConnection;
                 JobCommand.CommandType = CommandType.StoredProcedure;
-                
+                JobCommand.Parameters.Add(new SqlParameter("@InputString", SqlDbType.VarChar)).Value = InputString;
                 JobCommand.CommandText = "ExecuteSqlInputString";
 
 
