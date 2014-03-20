@@ -19,7 +19,7 @@
         <br />
         <asp:Label ID="Scrubbed1" runat="server" Text=""></asp:Label>
         <br />
-        <asp:Label ID="Errors1" runat="server" Text=""></asp:Label>
+        <asp:Label ID="Key1" runat="server" Text=""></asp:Label>
     
         <br />
         <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="true">
