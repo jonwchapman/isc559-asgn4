@@ -30,8 +30,9 @@ namespace businesslogic
         public DataTable GetSQLresult(string InputString, string ConnectionString)     // facade, simply passing parameters to dataaccess layer. Also invoking DL. 
         {
             DataTable dtSQLresults = new DataTable();
+            dataaccess.daSQLapp daSQLsubmit = new dataaccess.daSQLapp();
 
-
+            dtSQLresults = daSQLsubmit.GetSQLresult(InputString, ConnectionString);    // call DataAccess SQL submitter, set results equal to datatable results (dtSQLresults). 
 
             return dtSQLresults;
         }
