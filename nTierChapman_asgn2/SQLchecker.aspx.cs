@@ -46,7 +46,7 @@ namespace nTierChapman_asgn3
                 }
                 List<string> lst = tokenArray.OfType<string>().ToList();                                // take the array that we got back and turn it into a list
 
-                DataTable returneddl = obj_daSQLapp.GetSQLresult(inputStr, ConnectionString);
+                DataTable returneddl = checker.GetSQLresult(inputStr, ConnectionString);
 
                 returnedDL.DataSource = returneddl;
                 returnedDL.DataBind();

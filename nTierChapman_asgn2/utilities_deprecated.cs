@@ -7,7 +7,7 @@ namespace myUtilities_deprecated
 {
     /// SQL utility for ISC559 
 
-    public class SQLutilities
+    public class SQLutilities_deprecated
     {
         private string errorMessage;                                        
         public bool errorFound;                                             

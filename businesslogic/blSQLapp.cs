@@ -29,10 +29,11 @@ namespace businesslogic
 
         public DataTable GetSQLresult(string InputString, string ConnectionString)     // facade, simply passing parameters to dataaccess layer. Also invoking DL. 
         {
+            DataTable dtSQLresults = new DataTable();
 
 
 
-            return;
+            return dtSQLresults;
         }
 
         public void setError(int errorNum)                                    // setError method, expects an integer.
