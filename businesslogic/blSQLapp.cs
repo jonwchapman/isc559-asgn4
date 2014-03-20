@@ -27,10 +27,12 @@ namespace businesslogic
             return tokens;                                                // return array of elements.
         }
 
-        public DataTable GetSQLresult(string InputString, string ConnectionString)
+        public DataTable GetSQLresult(string InputString, string ConnectionString)     // facade, simply passing parameters to dataaccess layer. Also invoking DL. 
         {
-            return null;
-        
+
+
+
+            return;
         }
 
         public void setError(int errorNum)                                    // setError method, expects an integer.

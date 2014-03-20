@@ -17,10 +17,7 @@ namespace nTierChapman_asgn3
         
         String ConnectionString = ConfigurationManager.ConnectionStrings["dbconnect"].ConnectionString;
         
-        blSQLapp obj_blSQLapp = new blSQLapp();
-        daSQLapp obj_daSQLapp = new daSQLapp();
-
-       
+      
 
         protected void Page_Load(object sender, EventArgs e)
         {
