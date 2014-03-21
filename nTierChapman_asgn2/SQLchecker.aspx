@@ -10,7 +10,7 @@
     <form id="wellformedsqlchecker" runat="server">
     <div style="height: 382px">
     
-<h1>generic well formed SQL syntax checker</h1>
+<h1>generic SQL submission form</h1>
     
         <asp:TextBox ID="TextBox1" runat="server" Width="475px" MaxLength="150"></asp:TextBox>
         <br />
@@ -19,10 +19,10 @@
         <br />
         <asp:Label ID="Scrubbed1" runat="server" Text=""></asp:Label>
         <br />
-        <asp:Label ID="Key1" runat="server" Text=""></asp:Label>
+        <asp:Label ID="Key1" runat="server" Text="" style="z-index: 1; left: 490px; top: 134px; position: absolute"></asp:Label>
     
         <br />
-        <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="true">
+        <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="true" style="z-index: 1; left: 484px; top: 176px; position: absolute; height: 157px; width: 199px">
             <FooterStyle BackColor="White" ForeColor="#000066" />
             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
             <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
