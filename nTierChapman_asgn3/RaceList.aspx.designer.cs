@@ -10,70 +10,52 @@
 namespace nTierChapman_asgn3 {
     
     
-    public partial class SQLchecker {
+    public partial class RaceList {
         
         /// <summary>
-        /// wellformedsqlchecker control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm wellformedsqlchecker;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// TextBox1 control.
+        /// MainPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.Panel MainPanel;
         
         /// <summary>
-        /// LBEditor control.
+        /// btFind control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LBEditor;
+        protected global::System.Web.UI.WebControls.Button btFind;
         
         /// <summary>
-        /// btnCheckSyntax control.
+        /// tbQuery control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCheckSyntax;
+        protected global::System.Web.UI.WebControls.TextBox tbQuery;
         
         /// <summary>
-        /// Scrubbed1 control.
+        /// btAdd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Scrubbed1;
-        
-        /// <summary>
-        /// Key1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Key1;
-        
-        /// <summary>
-        /// GridView1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.Button btAdd;
         
         /// <summary>
         /// returnedDL control.

@@ -13,16 +13,17 @@
 <h1>generic SQL submission form</h1>
     
         <asp:TextBox ID="TextBox1" runat="server" Width="475px" MaxLength="150"></asp:TextBox>
+        <asp:LinkButton ID="LBEditor" runat="server" style="z-index: 1; left: 703px; top: 59px; position: absolute; height: 22px; width: 95px; right: 712px;" OnClick="LBeditor_Click">Records Editor</asp:LinkButton>
         <br />
         <asp:Button ID="btnCheckSyntax" runat="server" OnClick="btnCheckSyntax_Click" Text="Validate" />
     
         <br />
         <asp:Label ID="Scrubbed1" runat="server" Text=""></asp:Label>
         <br />
-        <asp:Label ID="Key1" runat="server" Text="" style="z-index: 1; left: 490px; top: 134px; position: absolute"></asp:Label>
+        <asp:Label ID="Key1" runat="server" Text="" style="z-index: 1; left: 723px; top: 134px; position: absolute"></asp:Label>
     
         <br />
-        <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="true" style="z-index: 1; left: 484px; top: 176px; position: absolute; height: 157px; width: 199px">
+        <asp:GridView ID="GridView1" runat="server" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateColumns="true" style="z-index: 1; left: 721px; top: 173px; position: absolute; height: 157px; width: 199px">
             <FooterStyle BackColor="White" ForeColor="#000066" />
             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
             <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />

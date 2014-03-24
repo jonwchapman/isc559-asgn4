@@ -65,11 +65,19 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="RaceList.aspx" />
     <Content Include="SQLchecker.aspx" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RaceList.aspx.cs">
+      <DependentUpon>RaceList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RaceList.aspx.designer.cs">
+      <DependentUpon>RaceList.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SQLchecker.aspx.cs">
       <DependentUpon>SQLchecker.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

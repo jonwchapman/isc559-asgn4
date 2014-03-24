@@ -58,6 +58,11 @@ namespace nTierChapman_asgn3
         {
 
         }
+
+        protected void LBeditor_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("RaceList.aspx");                                                         // Response class: comms back to server from browser | Request class: comms to browser from server
+        }   
         protected string ScrubSQLstring(string inputStr)
         {
             string scrubbedInput = "";                                                                  // Declare variable for the scrubbed input I am creating.

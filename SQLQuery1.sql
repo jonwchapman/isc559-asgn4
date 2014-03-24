@@ -1,12 +1,9 @@
 /*
-
-
 ISC 559 Spring 2014, Jon Chapman
-Script to build the data tier for n-Tier assignment
+Script to build the data tier for n-Tier assignment 4.
 
 This script runs as one transaction. 
 If the database already exists, drop it and recreate it.
-
 */
 
 --Don't display number of rows inserted. Restricts Messages to print statements
@@ -15,17 +12,17 @@ GO
 
 USE master
 GO
-IF EXISTS (SELECT * FROM sysdatabases WHERE name='nTierChapman')
+IF EXISTS (SELECT * FROM sysdatabases WHERE name='nTierChapman4')
       BEGIN
-	     DROP DATABASE nTierChapman;
+	     DROP DATABASE nTierChapman4;
 	     EXEC sp_droplogin 'jchapman';
 	     PRINT 'Dropped database and login';
       END
 GO
 
-CREATE DATABASE nTierChapman;
+CREATE DATABASE nTierChapman4;
 GO
-Use nTierChapman;
+Use nTierChapman4;
 GO
 
 /*
@@ -37,61 +34,83 @@ names. Insert at least four rows of data for each table.
 
 /*
 Drop individual objects...
-DROP TABLE tblPerson;
-DROP TABLE tblJob; 
+DROP TABLE tblRallyRacer;
+DROP TABLE tblRaces; 
 DROP ExecuteSqlInputString
 */
-CREATE TABLE tblPerson
+CREATE TABLE tblRallyRacer
 (
 PersonID INT IDENTITY(1,1) PRIMARY KEY,
 LastName VARCHAR(250) NOT NULL,
 FirstName VARCHAR(250) NOT NULL,
-AcctBalance MONEY NOT NULL DEFAULT 0.0
+SeasonWins VARCHAR(250) NULL DEFAULT 0
 );
 GO
-PRINT 'Created tblPerson';
+PRINT 'Created tblRallyRacer';
 GO
 
-INSERT INTO tblPerson(LastName, FirstName, AcctBalance) VALUES ('Pardue', 'Harold', 42);
-INSERT INTO tblPerson(LastName, FirstName, AcctBalance) VALUES ('Gates', 'Bill', 10000000000);
-INSERT INTO tblPerson(LastName, FirstName, AcctBalance) VALUES ('Holly', 'Cynthia', 15874);
-INSERT INTO tblPerson(LastName, FirstName, AcctBalance) VALUES ('Tretch', 'Laura', 10);
+INSERT INTO tblRallyRacer(LastName, FirstName, SeasonWins) VALUES ('Atkinson', 'Chris', 12);
+INSERT INTO tblRallyRacer(LastName, FirstName, SeasonWins) VALUES ('Pastrana', 'Travis', 3);
+INSERT INTO tblRallyRacer(LastName, FirstName, SeasonWins) VALUES ('Loeb', 'Sabastian', 78);
+INSERT INTO tblRallyRacer(LastName, FirstName, SeasonWins) VALUES ('Solberg', 'Petter', 10);
 
 GO
-PRINT 'Inserted silly sample Person data';
+PRINT 'Inserted silly sample Racer data';
 GO
 /*
 Test case SQL statement
-SELECT tblPerson.PersonID, tblPerson.LastName, 
-       tblPerson.FirstName, tblPerson.AcctBalance
-FROM tblPerson;
+SELECT tblRallyRacer.PersonID, tblRallyRacer.LastName, 
+       tblRallyRacer.FirstName, tblRallyRacer.SeasonWins
+FROM tblRallyRacer;
 */
 --------------------------------------
-CREATE TABLE tblJob
+CREATE TABLE tblRaces
 (
-JobID INT IDENTITY(1,1) PRIMARY KEY,
-JobLocation VARCHAR(500) NOT NULL,
-JobHours INT NOT NULL DEFAULT 0,
-JobCost MONEY NOT NULL DEFAULT 0.0
+RaceID INT IDENTITY(1,1) PRIMARY KEY,
+RaceLocation VARCHAR(500) NOT NULL,
+RaceLengthMiles INT NOT NULL DEFAULT 0,
+RaceWinnings MONEY NOT NULL DEFAULT 0.0
 );
 GO
-PRINT 'Created tblJob';
+PRINT 'Created tblRaces';
 GO
 
-INSERT INTO tblJob (JobLocation, JobHours, JobCost) VALUES ('Mobile', 6, 250.00);
-INSERT INTO tblJob (JobLocation, JobHours, JobCost) VALUES ('Grand Bay', 2, 50.50);
-INSERT INTO tblJob (JobLocation, JobHours, JobCost) VALUES ('Mobile', 30, 3000.00);
-INSERT INTO tblJob (JobLocation, JobHours, JobCost) VALUES ('Spanish Fort', 15, 1500.00);
-INSERT INTO tblJob (JobLocation, JobHours, JobCost) VALUES ('Troy', 21, 6000.00);
+INSERT INTO tblRaces (RaceLocation, RaceLengthMiles, RaceWinnings) VALUES ('Denver', 82, 25000);
+INSERT INTO tblRaces (RaceLocation, RaceLengthMiles, RaceWinnings) VALUES ('Helsinki', 76, 5000);
+INSERT INTO tblRaces (RaceLocation, RaceLengthMiles, RaceWinnings) VALUES ('Morocco', 127, 40000);
+INSERT INTO tblRaces (RaceLocation, RaceLengthMiles, RaceWinnings) VALUES ('Eagle Glenn', 97, 15000);
+INSERT INTO tblRaces (RaceLocation, RaceLengthMiles, RaceWinnings) VALUES ('Nome', 134, 60000);
 GO
 PRINT 'Inserted sample Job data';
 GO
 /*
 Test case SQL statement
-SELECT tblJob.JobLocation, tblJob.JobHours, tblJob.JobCost
-FROM tblJob;
+SELECT tblRaces.RaceLocation, tblRaces.RaceLengthMiles, tblRaces.RaceWinnings
+FROM tblRaces;
 */
 --------------------------------------
+
+
+/* Note about using the asterik during a production query. 
+1. Bad Security - violates "need to know" principal; can provide data for hacking (Data Leak)
+2. Poor Performance - Can lead to slow transactions e.g, What if last column contained a BLOB? (Example about storing PDFs in actual DB, instead of link)
+3. Can lead to run-time error. What if an App expects the columns in particular order? 
+*/
+CREATE PROC 
+
+
+
+END;
+
+
+CREATE PROC
+
+
+
+
+
+END;
+
 CREATE PROC ExecuteSqlInputString 
   @InputString NvarChar(3000)
 AS
@@ -154,15 +173,15 @@ SELECT permission on any tables they may need to access with the sproc ExecuteSq
 --In a way we don't need to do this because we are checking the syntax and only SELECT
 --is allowed in the input string.
 --But normally we would not grant select on any tables.
-GRANT SELECT ON tblPerson TO jchapman;
-REVOKE UPDATE ON tblPerson TO jchapman;
-REVOKE DELETE ON tblPerson TO jchapman;
-REVOKE INSERT ON tblPerson TO jchapman;
+GRANT SELECT ON tblRallyRacer TO jchapman;
+REVOKE UPDATE ON tblRallyRacer TO jchapman;
+REVOKE DELETE ON tblRallyRacer TO jchapman;
+REVOKE INSERT ON tblRallyRacer TO jchapman;
 GO
-GRANT SELECT ON tblJob TO jchapman;
-REVOKE UPDATE ON tblJob TO jchapman;
-REVOKE DELETE ON tblJob TO jchapman;
-REVOKE INSERT ON tblJob TO jchapman;
+GRANT SELECT ON tblRaces TO jchapman;
+REVOKE UPDATE ON tblRaces TO jchapman;
+REVOKE DELETE ON tblRaces TO jchapman;
+REVOKE INSERT ON tblRaces TO jchapman;
 GO
 GRANT EXECUTE ON ExecuteSqlInputString TO jchapman;
 GO
@@ -185,11 +204,11 @@ EXEC is short for Execute.
 */
 DECLARE @InputString NVARCHAR(3000);
 
-SET @InputString = 'SELECT tblPerson.PersonID, tblPerson.LastName, ' +
-                   'tblPerson.FirstName, tblPerson.AcctBalance FROM tblPerson;';
+SET @InputString = 'SELECT tblRallyRacer.PersonID, tblRallyRacer.LastName, ' +
+                   'tblRallyRacer.FirstName, tblRallyRacer.SeasonWins FROM tblRallyRacer;';
 
 EXEC ExecuteSqlInputString @InputString;
 
-SET @InputString = 'SELECT tblJob.JobLocation, tblJob.JobHours, tblJob.JobCost FROM tblJob;'
+SET @InputString = 'SELECT tblRaces.RaceLocation, tblRaces.RaceLengthMiles, tblRaces.RaceWinnings FROM tblRaces;'
 
 EXEC ExecuteSqlInputString @InputString;
