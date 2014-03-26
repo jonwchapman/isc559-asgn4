@@ -100,6 +100,7 @@ namespace nTierChapman_asgn3
                 
                 int rowIndex = Convert.ToInt32(e.CommandArgument);
                 DataKey dkRace = gvRaceList.DataKeys[rowIndex];
+                int RaceID = Convert.ToInt32(dkRace.Values["RaceID"]);
                 // row contains current Clicked Gridview Row
 
                 //  int index = Convert.ToInt32(e.CommandArgument);
