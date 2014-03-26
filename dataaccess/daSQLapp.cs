@@ -14,7 +14,7 @@ namespace dataaccess
         public daSQLapp()                                              //Define default constructor method to initialize properties
         {
             pTransactionSuccessful = true;
-            pJobCnt = 0;
+            pRaceCnt = 0;
         }
 
         #region "Properties"
@@ -22,11 +22,18 @@ namespace dataaccess
         public bool TransactionSuccessful
         {
             get { return pTransactionSuccessful; }
+            set { pTransactionSuccessful = value; }
         }
-        private int pJobCnt;
-        public int JobCnt
+        private string pErrorMessage;
+        public string ErrorMessage
         {
-            get { return pJobCnt; }
+            get { return pErrorMessage; }
+        }
+
+        private int pRaceCnt;
+        public int RaceCnt
+        {
+            get { return pRaceCnt; }
         }
         #endregion
 
@@ -37,23 +44,23 @@ namespace dataaccess
 
                 DataTable dtSQLresults = new DataTable("dtSQLresults");
 
-                using (SqlConnection JobConnection = new SqlConnection(ConnectionString))  // "using" so that the system garbage collects as soon as we are done using this object. 
+                using (SqlConnection RaceConnection = new SqlConnection(ConnectionString))  // "using" so that the system garbage collects as soon as we are done using this object. 
                 {
-                    JobConnection.Open();
-                    SqlCommand JobCommand = new SqlCommand();
+                    RaceConnection.Open();
+                    SqlCommand RaceCommand = new SqlCommand();
 
-                    JobCommand.Connection = JobConnection;
-                    JobCommand.CommandType = CommandType.StoredProcedure;
-                    JobCommand.Parameters.Add(new SqlParameter("@InputString", SqlDbType.VarChar)).Value = InputString;
-                    JobCommand.CommandText = "ExecuteSqlInputString";                      // This tells SQL what the name of the stored procedure is that we are using.
+                    RaceCommand.Connection = RaceConnection;
+                    RaceCommand.CommandType = CommandType.StoredProcedure;
+                    RaceCommand.Parameters.Add(new SqlParameter("@InputString", SqlDbType.VarChar)).Value = InputString;
+                    RaceCommand.CommandText = "ExecuteSqlInputString";                      // This tells SQL what the name of the stored procedure is that we are using.
 
 
-                    using (SqlDataAdapter JobAdapter = new SqlDataAdapter(JobCommand))
+                    using (SqlDataAdapter RaceAdapter = new SqlDataAdapter(RaceCommand))
                     {
                         try
                         {
                             DataSet SQLDS = new DataSet();
-                            JobAdapter.Fill(SQLDS);
+                            RaceAdapter.Fill(SQLDS);
 
                             dtSQLresults = SQLDS.Tables[0];
                         }
@@ -78,21 +85,21 @@ namespace dataaccess
 
             DataTable dtSQLresults = new DataTable("dtSQLresults");
 
-            using (SqlConnection JobConnection = new SqlConnection(ConnectionString))  // "using" so that the system garbage collects as soon as we are done using this object. 
+            using (SqlConnection RaceConnection = new SqlConnection(ConnectionString))  // "using" so that the system garbage collects as soon as we are done using this object. 
             {
-                JobConnection.Open();
-                SqlCommand JobCommand = new SqlCommand();
+                RaceConnection.Open();
+                SqlCommand RaceCommand = new SqlCommand();
 
-                JobCommand.Connection = JobConnection;
-                JobCommand.CommandType = CommandType.StoredProcedure;
-                JobCommand.Parameters.Add(new SqlParameter("@SearchArg", SqlDbType.VarChar)).Value = InputString;
+                RaceCommand.Connection = RaceConnection;
+                RaceCommand.CommandType = CommandType.StoredProcedure;
+                RaceCommand.Parameters.Add(new SqlParameter("@SearchArg", SqlDbType.VarChar)).Value = InputString;
                 if (Proc == 1)
                 {
-                    JobCommand.CommandText = "GetRaceList";                      // This tells SQL what the name of the stored procedure is that we are using.
+                    RaceCommand.CommandText = "GetRaceList";                      // This tells SQL what the name of the stored procedure is that we are using.
                 }
                 else if (Proc == 2)
                 {
-                    JobCommand.CommandText = "GetRaceInfo";                      // This tells SQL what the name of the stored procedure is that we are using.
+                    RaceCommand.CommandText = "GetRaceInfo";                      // This tells SQL what the name of the stored procedure is that we are using.
                 }
                 else
                 { 
@@ -102,12 +109,12 @@ namespace dataaccess
                
 
 
-                using (SqlDataAdapter JobAdapter = new SqlDataAdapter(JobCommand))
+                using (SqlDataAdapter RaceAdapter = new SqlDataAdapter(RaceCommand))
                 {
                     try
                     {
                         DataSet SQLDS = new DataSet();
-                        JobAdapter.Fill(SQLDS);
+                        RaceAdapter.Fill(SQLDS);
 
                         dtSQLresults = SQLDS.Tables[0];
                     }
@@ -125,7 +132,36 @@ namespace dataaccess
             }
             return dtSQLresults;
         }
+        public void DelRaceInfo(int RaceID, string ConnectionString)  //overload the original GetSQLresult, taking a PROC parameter for which stored procedure to run. Trying to cut down number of lines. May have to be refactored, but lets try it. Consider changing PROC to varchar, rather than int. Makes calling pages more readable.
+        {
 
+
+            DataTable dtSQLresults = new DataTable("dtSQLresults");
+           
+            using (SqlConnection RaceConnection = new SqlConnection(ConnectionString))  // "using" so that the system garbage collects as soon as we are done using this object. 
+            {
+                RaceConnection.Open();
+                
+                SqlCommand RaceCommand = new SqlCommand();
+                RaceCommand.Connection = RaceConnection;
+                RaceCommand.CommandType = CommandType.StoredProcedure;
+                RaceCommand.Parameters.Add(new SqlParameter("@RaceID", SqlDbType.Int)).Value = RaceID;
+                RaceCommand.CommandText = "DelRaceInfo";                      // This tells SQL what the name of the stored procedure is that we are using.
+                RaceCommand.Parameters["@RaceID"].Direction = ParameterDirection.Input;
+
+
+                using (SqlCommand TryRaceCommand = RaceCommand)   // Very hackish, but wouldn't run otherwise. I kept getting scope issues without declaring this Try version of the SqlCommand. WHY??
+                try
+                {
+                    TryRaceCommand.ExecuteNonQuery();
+                }
+                catch (SqlException DelError)
+                {
+                    pErrorMessage = DelError.Message.ToString();
+                }
+            }
+            return;
+        }
 
 
 
