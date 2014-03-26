@@ -20,13 +20,8 @@ namespace nTierChapman_asgn3
             if (!IsPostBack)
             {
                 SetFormMode();
-            
+
             }
-
-
-          
-
-
         }
 
         private void SetFormMode() 
@@ -60,7 +55,7 @@ namespace nTierChapman_asgn3
 
             gvRaceList.DataSource = dvRace;
             gvRaceList.DataBind();
-            gvRaceList.Columns[0].Visible = false;      
+            gvRaceList.Columns[0].Visible = false;      // Cheating and including the RaceID so I can reference it later because I cannot get Dr. Pardue's method to work yet..... ARGH!
         }
 
         protected void gvRaceList_Sorting(object sender, GridViewSortEventArgs e)
@@ -103,13 +98,12 @@ namespace nTierChapman_asgn3
             if (e.CommandName == "DeleteJob")
             {
                 
-                //int rowIndex = Convert.ToInt32(e.CommandArgument.ToString());
+                int rowIndex = Convert.ToInt32(e.CommandArgument);
+                DataKey dkRace = gvRaceList.DataKeys[rowIndex];
                 // row contains current Clicked Gridview Row
 
-                int index = Convert.ToInt32(e.CommandArgument);
-
-
-                // int RaceID = Convert.ToInt32(gvRaceList.SelectedRow.Cells[0].Text)
+                //  int index = Convert.ToInt32(e.CommandArgument);
+                //  int RaceID = Convert.ToInt32(gvRaceList.SelectedRow.Cells[0].Text)
                 //  int RaceID = Convert.ToInt32(gvRaceList.DataKeys[index].Value);
                 //  int RaceID = Convert.ToInt32(gvRaceList.Rows[rowIndex].Cells[0].Text);
 
