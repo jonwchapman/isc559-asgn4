@@ -72,7 +72,7 @@ namespace dataaccess
                 return dtSQLresults;
         }
 
-        public DataTable GetSQLresult(string InputString, string ConnectionString, int Proc)
+        public DataTable GetSQLresult(string InputString, string ConnectionString, int Proc)  //overload the original GetSQLresult, taking a PROC parameter for which stored procedure to run. Trying to cut down number of lines. May have to be refactored, but lets try it. Consider changing PROC to varchar, rather than int. Makes calling pages more readable.
         {
 
 
@@ -90,9 +90,14 @@ namespace dataaccess
                 {
                     JobCommand.CommandText = "GetRaceList";                      // This tells SQL what the name of the stored procedure is that we are using.
                 }
-                else
+                else if (Proc == 2)
                 {
                     JobCommand.CommandText = "GetRaceInfo";                      // This tells SQL what the name of the stored procedure is that we are using.
+                }
+                else
+                { 
+                
+                
                 }
                
 
