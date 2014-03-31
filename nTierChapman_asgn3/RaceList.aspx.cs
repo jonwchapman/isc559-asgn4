@@ -96,21 +96,13 @@ namespace nTierChapman_asgn3
         protected void gvRaceList_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
-            int rowIndex = Convert.ToInt32(e.CommandArgument);
-            DataKey dkRace = gvRaceList.DataKeys[rowIndex];
-            int RaceID = Convert.ToInt32(dkRace.Values["RaceID"]);
+            int rowIndex = Convert.ToInt32(e.CommandArgument);                                             // row contains current Clicked Gridview Row
+            DataKey dkRace = gvRaceList.DataKeys[rowIndex];                                                // set our dkRace datakey to the rowindex datakey value, remember to set GV datakey properties on aspx page to correct value!
+            int RaceID = Convert.ToInt32(dkRace.Values["RaceID"]); 
 
             if (e.CommandName == "DeleteJob")
             {
-                
                
-                // row contains current Clicked Gridview Row
-
-                //  int index = Convert.ToInt32(e.CommandArgument);
-                //  int RaceID = Convert.ToInt32(gvRaceList.SelectedRow.Cells[0].Text)
-                //  int RaceID = Convert.ToInt32(gvRaceList.DataKeys[index].Value);
-                //  int RaceID = Convert.ToInt32(gvRaceList.Rows[rowIndex].Cells[0].Text);
-
                 dataaccess.daSQLapp objRace = new dataaccess.daSQLapp();
                 objRace.DelRaceInfo(RaceID, ConnectionString);
                 PopulateGridView();
@@ -127,6 +119,11 @@ namespace nTierChapman_asgn3
         protected void gvRaceList_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btAdd_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AddEditRace.aspx");
         }
 
 
