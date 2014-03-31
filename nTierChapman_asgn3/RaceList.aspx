@@ -22,12 +22,12 @@
             <asp:Button ID="btAdd" runat="server" style="z-index: 1; left: 444px; top: 45px; position: absolute" Text="Add New" OnClick="btAdd_Click" />
             <asp:GridView ID="gvRaceList" runat="server" AutoGenerateColumns="False" 
                           style="z-index: 1; left: 165px; top: 143px; position: absolute; height: 133px; width: 395px" 
-                          AllowSorting="True"  DataKeyNmes="RaceID" OnRowCommand="gvRaceList_RowCommand" OnSorting="gvRaceList_Sorting" OnRowDataBound="gvRaceList_RowDataBound" OnSelectedIndexChanged="gvRaceList_SelectedIndexChanged" DataKeyNames="RaceID"  >
+                          AllowSorting="True"  DataKeyNmes="RaceID" OnRowCommand="gvRaceList_RowCommand" OnSorting="gvRaceList_Sorting" OnRowDataBound="gvRaceList_RowDataBound" OnSelectedIndexChanged="gvRaceList_SelectedIndexChanged" DataKeyNames="RaceID" BorderStyle="Solid"  >
                 <Columns>
                     <asp:BoundField DataField="RaceLocation" HeaderText="RaceLocation" SortExpression="RaceLocation" />
                     <asp:BoundField DataField="RaceLengthMiles" HeaderText="RaceLengthMiles" SortExpression="RaceLengthMiles" />
                     <asp:BoundField DataField="RaceWinnings" HeaderText="RaceWinnings" SortExpression="RaceWinnings" />
-                    <asp:ButtonField CommandName="EditDetails" HeaderText="Details" Text="Edit" />
+                    <asp:ButtonField CommandName="AddEditRace" HeaderText="Details" Text="Edit" />
                     <asp:ButtonField CommandName="DeleteJob" HeaderText="Record" Text="Delete" /> 
                 </Columns>
             </asp:GridView>

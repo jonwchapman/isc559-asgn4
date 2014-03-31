@@ -12,7 +12,6 @@ namespace nTierChapman_asgn3
 {
     public partial class RaceList : System.Web.UI.Page
     {
-
         String ConnectionString = ConfigurationManager.ConnectionStrings["dbconnect"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,7 +22,6 @@ namespace nTierChapman_asgn3
 
             }
         }
-
         private void SetFormMode() 
         {
             //initialize anything that needs to be initialized here if it is an intial page load rather than postback.
@@ -39,13 +37,11 @@ namespace nTierChapman_asgn3
 
             PopulateGridView();
         }
-
         protected void btFind_Click(object sender, EventArgs e)     // Dr. Pardue did a more complicated setup, checking for existences of text, and then calling an overloaded method or not depending on need.
         {                                                           // I saw no reason for this complication. Maybe ask why I would do it his way? 
             PopulateGridView();   
            
         }
-
         private void PopulateGridView() {
             businesslogic.blSQLapp lister = new businesslogic.blSQLapp();                          // create instance of our SQLutilities class, call it "lister". 
             DataTable dtRace = lister.GetSQLresult(tbQuery.Text, ConnectionString, 1);
@@ -55,9 +51,7 @@ namespace nTierChapman_asgn3
 
             gvRaceList.DataSource = dvRace;
             gvRaceList.DataBind();
-            gvRaceList.Columns[0].Visible = false;      // Cheating and including the RaceID so I can reference it later because I cannot get Dr. Pardue's method to work yet..... ARGH!
         }
-
         protected void gvRaceList_Sorting(object sender, GridViewSortEventArgs e)
         {
             Session["SortExpression"] = e.SortExpression.ToString();
@@ -115,18 +109,13 @@ namespace nTierChapman_asgn3
             }
 
         }
-    
         protected void gvRaceList_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-
         protected void btAdd_Click(object sender, EventArgs e)
         {
             Response.Redirect("AddEditRace.aspx");
         }
-
-
-    
     }
 }
