@@ -136,7 +136,7 @@ namespace dataaccess
         {
 
 
-            DataTable dtSQLresults = new DataTable("dtSQLresults");
+            //DataTable dtSQLresults = new DataTable("dtSQLresults");
            
             using (SqlConnection RaceConnection = new SqlConnection(ConnectionString))  // "using" so that the system garbage collects as soon as we are done using this object. 
             {
@@ -150,10 +150,9 @@ namespace dataaccess
                 RaceCommand.Parameters["@RaceID"].Direction = ParameterDirection.Input;
 
 
-                using (SqlCommand TryRaceCommand = RaceCommand)   // Very hackish, but wouldn't run otherwise. I kept getting scope issues without declaring this Try version of the SqlCommand. WHY??
                 try
                 {
-                    TryRaceCommand.ExecuteNonQuery();
+                    RaceCommand.ExecuteNonQuery();
                 }
                 catch (SqlException DelError)
                 {

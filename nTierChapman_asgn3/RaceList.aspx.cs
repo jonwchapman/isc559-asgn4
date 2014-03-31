@@ -95,12 +95,15 @@ namespace nTierChapman_asgn3
         }
         protected void gvRaceList_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+
+            int rowIndex = Convert.ToInt32(e.CommandArgument);
+            DataKey dkRace = gvRaceList.DataKeys[rowIndex];
+            int RaceID = Convert.ToInt32(dkRace.Values["RaceID"]);
+
             if (e.CommandName == "DeleteJob")
             {
                 
-                int rowIndex = Convert.ToInt32(e.CommandArgument);
-                DataKey dkRace = gvRaceList.DataKeys[rowIndex];
-                int RaceID = Convert.ToInt32(dkRace.Values["RaceID"]);
+               
                 // row contains current Clicked Gridview Row
 
                 //  int index = Convert.ToInt32(e.CommandArgument);
